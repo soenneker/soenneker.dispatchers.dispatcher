@@ -4,10 +4,11 @@
   </Folder>
   <Folder Name="/.github/workflows/">
     <File Path=".github/workflows/build-and-test.yml" />
+    <File Path=".github/workflows/codeql.yml" />
     <File Path=".github/workflows/publish-package.yml" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/Soenneker.Dispatchers.Dispatcher.csproj" />
+    <Project Path="src/Soenneker.Dispatchers.Dispatcher/Soenneker.Dispatchers.Dispatcher.csproj" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/Soenneker.Dispatchers.Dispatcher.Tests/Soenneker.Dispatchers.Dispatcher.Tests.csproj" />

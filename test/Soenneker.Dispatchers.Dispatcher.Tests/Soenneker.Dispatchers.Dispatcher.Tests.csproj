@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Dispatchers.Dispatcher.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Dispatchers.Dispatcher\Soenneker.Dispatchers.Dispatcher.csproj" />
     </ItemGroup>
 
     <ItemGroup>
