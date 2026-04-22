@@ -1,16 +1,15 @@
-﻿using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Dispatchers.Dispatcher.Tests;
 
-[Collection("Collection")]
-public class DispatcherTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class DispatcherTests : HostedUnitTest
 {
-    public DispatcherTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public DispatcherTests(Host host) : base(host)
     {
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
