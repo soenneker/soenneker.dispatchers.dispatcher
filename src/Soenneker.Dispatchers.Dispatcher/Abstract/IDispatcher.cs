@@ -1,7 +1,7 @@
 ﻿namespace Soenneker.Dispatchers.Dispatcher.Abstract;
 
 /// <summary>
-/// An abstract base class for Dispatchers, that handles routing across other utilities
+/// Identifies a dispatcher service.
 /// </summary>
 public interface IDispatcher
 {

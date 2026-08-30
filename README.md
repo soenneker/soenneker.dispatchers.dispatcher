@@ -5,14 +5,36 @@
 
 # Soenneker.Dispatchers.Dispatcher
 
-An abstract base class for Dispatchers, that handles routing across other utilities.
+Provides a marker interface and a logging base class for application-specific dispatchers.
 
-## Install
+## Installation
 
 ```bash
 dotnet add package Soenneker.Dispatchers.Dispatcher
 ```
 
-## What you get
+## Usage
 
-- `IDispatcher` — An abstract base class for Dispatchers, that handles routing across other utilities.
+```csharp
+using Microsoft.Extensions.Logging;
+using Soenneker.Dispatchers.Dispatcher;
+
+public sealed class NotificationDispatcher(ILogger<Dispatcher> logger)
+    : Dispatcher(logger)
+{
+    public Task Dispatch(string message, CancellationToken cancellationToken = default)
+    {
+        Logger.LogInformation("Dispatching notification");
+        return Send(message, cancellationToken);
+    }
+
+    private static Task Send(string message, CancellationToken cancellationToken) =>
+        Task.CompletedTask;
+}
+```
+
+`Dispatcher` only stores the logger and exposes it to derived classes through the protected `Logger` property. It does not define dispatch methods, select handlers, queue work, manage retries, or register services. Those behaviors and any application-specific interface belong in the derived dispatcher.
+
+All subclasses use the `Soenneker.Dispatchers.Dispatcher.Dispatcher` logging category because the constructor accepts `ILogger<Dispatcher>`.
+
+`IDispatcher` is an empty marker contract. Use it when discovery or registration code needs a common dispatcher type; it does not provide callable members.
